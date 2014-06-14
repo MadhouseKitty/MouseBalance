@@ -3,11 +3,12 @@ package MouseBalance.service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Observable;
 
 import MouseBalance.materials.Measurement;
 import MouseBalance.materials.Mouse;
 
-public class MeasurementService
+public class MeasurementService extends Observable
 {
 	Map<Mouse,List<Measurement>> _mousemap;
 	
@@ -19,5 +20,6 @@ public class MeasurementService
 	public void addMeasurement(Mouse sweetMouse, Measurement measurement)
 	{
 		_mousemap.get(sweetMouse).add(measurement);
+		this.notifyObservers();
 	}
 }

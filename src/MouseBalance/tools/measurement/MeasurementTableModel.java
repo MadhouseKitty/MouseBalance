@@ -1,9 +1,20 @@
-package MouseBalance.tools;
+package MouseBalance.tools.measurement;
+
+import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import MouseBalance.materials.Measurement;
+
 public class MeasurementTableModel extends AbstractTableModel
 {
+	private List<Measurement> _measurements;
+	
+	public void setmeasurements(List<Measurement> measurements)
+	{
+		_measurements = measurements;
+	}
+
 	@Override
 	public int getColumnCount()
 	{
