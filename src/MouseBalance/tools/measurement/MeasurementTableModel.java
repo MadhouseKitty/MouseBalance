@@ -18,22 +18,27 @@ public class MeasurementTableModel extends AbstractTableModel
 	@Override
 	public int getColumnCount()
 	{
-		// TODO Auto-generated method stub
 		return 2;
 	}
 
 	@Override
 	public int getRowCount()
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return _measurements.size();
 	}
 
 	@Override
-	public Object getValueAt(int arg0, int arg1)
+	public Object getValueAt(int row, int column)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		switch(column)
+		{
+		case 0:
+			return _measurements.get(row).getDate();
+		case 1:
+			return _measurements.get(row).getWeight();
+		default:
+			return null;
+		}
 	}
 
 }
