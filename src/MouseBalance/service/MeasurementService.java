@@ -1,5 +1,6 @@
 package MouseBalance.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,5 +22,10 @@ public class MeasurementService extends Observable
 	{
 		_mousemap.get(sweetMouse).add(measurement);
 		this.notifyObservers();
+	}
+	
+	public List<Measurement> getListForMouse(Mouse mice)
+	{
+		return new ArrayList();
 	}
 }

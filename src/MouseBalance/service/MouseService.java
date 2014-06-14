@@ -1,5 +1,6 @@
 package MouseBalance.service;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
@@ -8,7 +9,7 @@ import MouseBalance.materials.Mouse;
 
 public class MouseService extends Observable
 {
-	List<Mouse> _mouseList;
+	private List<Mouse> _mouseList;
 	
 	public MouseService()
 	{
@@ -20,5 +21,10 @@ public class MouseService extends Observable
 		_mouseList.add(sweetMouse);
 		this.setChanged();
 		this.notifyObservers();
+	}
+	
+	public List<Mouse> getMouseList()
+	{
+		return new ArrayList<>(_mouseList);
 	}
 }

@@ -31,5 +31,8 @@ public class Mouse
 		return _colour;
 	}
 	
-	
+	public String toString()
+	{
+		return _name;
+	}
 }
