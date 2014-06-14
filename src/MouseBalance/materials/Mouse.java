@@ -1,5 +1,7 @@
 package MouseBalance.materials;
 
+import java.util.Date;
+
 
 public class Mouse
 {
@@ -7,10 +9,10 @@ public class Mouse
 	private final Date _birthday;
 	private final String _colour;
 	
-	public Mouse(String name, Date birthday, String colour)
+	public Mouse(String name, Date birth, String colour)
 	{
 		_name = name;
-		_birthday = birthday;
+		_birthday = birth;
 		_colour = colour;
 	}
 	
