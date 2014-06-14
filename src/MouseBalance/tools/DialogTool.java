@@ -10,9 +10,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import MouseBalance.materials.Mouse;
+
 public class DialogTool
 {
-	public static Object newMouseDialog()
+	public static Mouse newMouseDialog()
 	{
 		JTextField mouseName = new JTextField(12);
 		JTextField mouseBirthDate = new JTextField(12);
@@ -48,8 +50,7 @@ public class DialogTool
 					}
 					else
 					{
-						//return new Mouse(mouseName.getText(),birth);
-						return null;
+						return new Mouse(mouseName.getText(),birth,mouseColour.getText());
 					}
 				} 
 				catch (ParseException e)
