@@ -27,6 +27,10 @@ public class Mouse {
 
 	@Override
 	public String toString() {
-		return _name;
+		return saveString();
+	}
+	
+	public String saveString() {
+		return _name + "/" + _colour + "/" + _birthday;
 	}
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Observable;
 
 import de.kitty.saremox.mousebalance.materials.Mouse;
+import de.kitty.saremox.mousebalance.service.io.MouseSaver;
 
 public class MouseService extends Observable {
 	private List<Mouse> _mouseList;
@@ -16,6 +17,7 @@ public class MouseService extends Observable {
 
 	public void addMouse(Mouse sweetMouse) {
 		_mouseList.add(sweetMouse);
+		MouseSaver.saveMouse(sweetMouse);
 		this.setChanged();
 		this.notifyObservers();
 	}
