@@ -18,4 +18,8 @@ public class Measurement {
 	public Weight getWeight() {
 		return _weight;
 	}
+
+	public String toSaveString() {
+		return _date.toString()+"/"+_weight;
+	}
 }
