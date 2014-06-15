@@ -20,7 +20,7 @@ public class MouseLoader {
 	{		
 		LinkedList<Mouse> mouseList = new LinkedList<>();
 		
-		try (BufferedReader savedMice = new BufferedReader(new FileReader("../savedmice.txt")))
+		try (BufferedReader savedMice = new BufferedReader(new FileReader("../savedmice")))
 		{
 			String mouseString;
 			
