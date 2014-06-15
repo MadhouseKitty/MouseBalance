@@ -23,6 +23,13 @@ public class MouseService extends Observable
 		this.notifyObservers();
 	}
 	
+	public void removeMouse(Mouse sweetMouse)
+	{
+		_mouseList.remove(sweetMouse);
+		this.setChanged();
+		this.notifyObservers();
+	}
+	
 	public List<Mouse> getMouseList()
 	{
 		return new ArrayList<>(_mouseList);

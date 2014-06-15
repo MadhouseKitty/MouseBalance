@@ -34,6 +34,11 @@ public class MouseTool extends Observable implements Observer
 		_service.addMouse(mice);
 	}
 	
+	public void removeMouse(Mouse mice)
+	{
+		_service.removeMouse(mice);
+	}
+	
 	public Mouse getSelectedMouse()
 	{
 		return _ui.getSelectedMouse();
