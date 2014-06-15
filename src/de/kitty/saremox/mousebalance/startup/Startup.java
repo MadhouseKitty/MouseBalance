@@ -1,11 +1,11 @@
-package startup;
+package de.kitty.saremox.mousebalance.startup;
 
 import java.util.Date;
 
-import MouseBalance.materials.Mouse;
-import MouseBalance.tools.MainUi;
-import MouseBalance.tools.measurement.MeasurementTool;
-import MouseBalance.tools.mouse.MouseTool;
+import de.kitty.saremox.mousebalance.materials.Mouse;
+import de.kitty.saremox.mousebalance.tools.MainUi;
+import de.kitty.saremox.mousebalance.tools.measurement.MeasurementTool;
+import de.kitty.saremox.mousebalance.tools.mouse.MouseTool;
 
 public class Startup {
 	public static void main(String[] args) {

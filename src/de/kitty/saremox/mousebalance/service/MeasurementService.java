@@ -1,4 +1,4 @@
-package MouseBalance.service;
+package de.kitty.saremox.mousebalance.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 
-import MouseBalance.materials.Measurement;
-import MouseBalance.materials.Mouse;
+import de.kitty.saremox.mousebalance.materials.Measurement;
+import de.kitty.saremox.mousebalance.materials.Mouse;
 
 public class MeasurementService extends Observable {
 	Map<Mouse, List<Measurement>> _mousemap;

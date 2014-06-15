@@ -1,4 +1,4 @@
-package MouseBalance.tools;
+package de.kitty.saremox.mousebalance.tools;
 
 import java.awt.BorderLayout;
 

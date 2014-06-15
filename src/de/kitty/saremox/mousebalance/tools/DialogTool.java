@@ -1,4 +1,4 @@
-package MouseBalance.tools;
+package de.kitty.saremox.mousebalance.tools;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -10,9 +10,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import MouseBalance.materials.Measurement;
-import MouseBalance.materials.Mouse;
-import MouseBalance.materials.Weight;
+import de.kitty.saremox.mousebalance.materials.Measurement;
+import de.kitty.saremox.mousebalance.materials.Mouse;
+import de.kitty.saremox.mousebalance.materials.Weight;
 
 public class DialogTool {
 	public static Measurement newMeasurementDialog() {

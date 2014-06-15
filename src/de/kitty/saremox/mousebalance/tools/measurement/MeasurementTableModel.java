@@ -1,11 +1,11 @@
-package MouseBalance.tools.measurement;
+package de.kitty.saremox.mousebalance.tools.measurement;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import MouseBalance.materials.Measurement;
+import de.kitty.saremox.mousebalance.materials.Measurement;
 
 public class MeasurementTableModel extends AbstractTableModel {
 	/**

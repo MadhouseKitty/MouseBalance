@@ -1,4 +1,4 @@
-package MouseBalance.tools.measurement;
+package de.kitty.saremox.mousebalance.tools.measurement;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -11,8 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import MouseBalance.materials.Measurement;
-import MouseBalance.tools.DialogTool;
+import de.kitty.saremox.mousebalance.materials.Measurement;
+import de.kitty.saremox.mousebalance.tools.DialogTool;
 
 public class MeasurementUi implements Observer {
 	private JPanel _panel;

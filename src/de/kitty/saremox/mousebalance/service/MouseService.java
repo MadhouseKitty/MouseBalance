@@ -1,11 +1,11 @@
-package MouseBalance.service;
+package de.kitty.saremox.mousebalance.service;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
 
-import MouseBalance.materials.Mouse;
+import de.kitty.saremox.mousebalance.materials.Mouse;
 
 public class MouseService extends Observable {
 	private List<Mouse> _mouseList;

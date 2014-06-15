@@ -1,12 +1,12 @@
-package MouseBalance.tools.mouse;
+package de.kitty.saremox.mousebalance.tools.mouse;
 
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JPanel;
 
-import MouseBalance.materials.Mouse;
-import MouseBalance.service.MouseService;
+import de.kitty.saremox.mousebalance.materials.Mouse;
+import de.kitty.saremox.mousebalance.service.MouseService;
 
 public class MouseTool extends Observable implements Observer {
 	private MouseService _service;

@@ -1,10 +1,10 @@
-package MouseBalance.tools.mouse;
+package de.kitty.saremox.mousebalance.tools.mouse;
 
 import java.util.List;
 
 import javax.swing.AbstractListModel;
 
-import MouseBalance.materials.Mouse;
+import de.kitty.saremox.mousebalance.materials.Mouse;
 
 public class MouseListModel extends AbstractListModel<Mouse> {
 	/**

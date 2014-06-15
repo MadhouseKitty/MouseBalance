@@ -1,4 +1,4 @@
-package MouseBalance.tools.mouse;
+package de.kitty.saremox.mousebalance.tools.mouse;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -13,8 +13,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import MouseBalance.materials.Mouse;
-import MouseBalance.tools.DialogTool;
+import de.kitty.saremox.mousebalance.materials.Mouse;
+import de.kitty.saremox.mousebalance.tools.DialogTool;
 
 public class MouseUi extends Observable {
 	class MouseListSelectionListener implements ListSelectionListener {

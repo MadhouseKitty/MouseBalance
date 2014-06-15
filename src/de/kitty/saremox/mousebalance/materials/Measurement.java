@@ -1,4 +1,4 @@
-package MouseBalance.materials;
+package de.kitty.saremox.mousebalance.materials;
 
 import java.util.Date;
 

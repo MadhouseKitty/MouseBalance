@@ -1,4 +1,4 @@
-package MouseBalance.materials;
+package de.kitty.saremox.mousebalance.materials;
 
 public class Weight {
 	private final int _weight;
