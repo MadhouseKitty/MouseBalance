@@ -25,4 +25,9 @@ public class Weight {
 	public int getWeight() {
 		return _weight;
 	}
+	
+	public String toString()
+	{
+		return Integer.toString(_weight);
+	}
 }
