@@ -32,15 +32,15 @@ public class MeasurementLoader {
 				String[] measurementString = str.split("/");
 				try
 				{
-					measurements.add(new Measurement(new Weight(Integer.parseInt(measurementString[0])), format.parse(measurementString[1])));
+					measurements.add(new Measurement(new Weight(Integer.parseInt(measurementString[1])), format.parse(measurementString[0])));
 				}
 				catch(NumberFormatException e)
 				{
-					
+					e.printStackTrace();
 				}
 				catch(ParseException e)
 				{
-					
+					e.printStackTrace();
 				}
 			}
 		} catch (FileNotFoundException e) {
