@@ -16,7 +16,7 @@ public class MouseTool extends Observable implements Observer {
 	public MouseTool() {
 		_service = new MouseService();
 		_service.addObserver(this);
-		_model = new MouseListModel();
+		_model = new MouseListModel(_service.getMouseList());
 		_model.setmouse(_service.getMouseList());
 		_ui = new MouseUi(_model, this);
 		_ui.addObserver(this);
