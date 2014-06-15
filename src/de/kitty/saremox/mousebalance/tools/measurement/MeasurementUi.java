@@ -1,6 +1,7 @@
 package de.kitty.saremox.mousebalance.tools.measurement;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
@@ -10,12 +11,13 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SpringLayout;
 
 import de.kitty.saremox.mousebalance.materials.Measurement;
 import de.kitty.saremox.mousebalance.tools.DialogTool;
 
 public class MeasurementUi implements Observer {
-	private JPanel _panel;
+	private JPanel _panel,_buttonPanel;
 	private JButton _newMeasurementButton;
 
 	public MeasurementUi(MeasurementTableModel _tablemodel,
@@ -34,11 +36,13 @@ public class MeasurementUi implements Observer {
 				}
 			}
 		});
-
+		_buttonPanel = new JPanel();
+		_buttonPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		_buttonPanel.add(_newMeasurementButton);
 		_panel = new JPanel();
 		_panel.setLayout(new BorderLayout());
 		_panel.add(new JScrollPane(table), BorderLayout.CENTER);
-		_panel.add(_newMeasurementButton, BorderLayout.NORTH);
+		_panel.add(_buttonPanel, BorderLayout.NORTH);
 	}
 
 	public JPanel get_panel() {
