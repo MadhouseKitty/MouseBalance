@@ -31,6 +31,7 @@ public class Mouse {
 	}
 	
 	public String saveString() {
-		return _name + "/" + _colour + "/" + _birthday;
+		return _name + "/" + _birthday + "/" + _colour;
 	}
+	
 }
