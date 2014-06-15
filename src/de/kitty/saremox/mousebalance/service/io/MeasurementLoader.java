@@ -20,7 +20,7 @@ public class MeasurementLoader {
 		ArrayList<Measurement> measurements = new ArrayList<>();
 		try(BufferedReader measurementReader = new BufferedReader(new FileReader(mouse.getName()+".mice")))
 		{
-			DateFormat format = new SimpleDateFormat();
+			DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
 			String str;
 			while((str = measurementReader.readLine()) != null)
 			{

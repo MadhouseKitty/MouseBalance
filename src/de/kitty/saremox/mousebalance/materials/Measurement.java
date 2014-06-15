@@ -1,5 +1,6 @@
 package de.kitty.saremox.mousebalance.materials;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Measurement {
@@ -20,6 +21,6 @@ public class Measurement {
 	}
 
 	public String toSaveString() {
-		return _date.toString()+"/"+_weight;
+		return new SimpleDateFormat("dd.MM.yyyy").format(_date)+"/"+_weight;
 	}
 }

@@ -1,5 +1,6 @@
 package de.kitty.saremox.mousebalance.materials;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Mouse {
@@ -31,7 +32,7 @@ public class Mouse {
 	}
 	
 	public String saveString() {
-		return _name + "/" + _birthday + "/" + _colour;
+		return _name + "/" + new SimpleDateFormat("dd.MM.yyyy").format(_birthday) + "/" + _colour;
 	}
 	
 }

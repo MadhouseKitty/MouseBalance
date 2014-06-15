@@ -34,11 +34,11 @@ public class MouseLoader {
 				String [] mouseStringArray = mouseString.split("/");
 				try
 				{
-					mouseList.add(new Mouse(mouseStringArray[0], new SimpleDateFormat().parse(mouseStringArray[1]), mouseStringArray[2]));
+					mouseList.add(new Mouse(mouseStringArray[0], new SimpleDateFormat("dd.MM.yyyy").parse(mouseStringArray[1]), mouseStringArray[2]));
 				}
 				catch (ParseException e)
 				{
-					
+					e.printStackTrace();
 				}
 			}			
 		} 		
