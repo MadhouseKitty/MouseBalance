@@ -27,7 +27,7 @@ public class Mouse {
 
 	@Override
 	public String toString() {
-		return saveString();
+		return _name;
 	}
 	
 	public String saveString() {
