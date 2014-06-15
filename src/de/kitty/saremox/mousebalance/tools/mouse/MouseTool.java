@@ -1,5 +1,6 @@
 package de.kitty.saremox.mousebalance.tools.mouse;
 
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -36,6 +37,11 @@ public class MouseTool extends Observable implements Observer {
 
 	public JPanel getUiPanel() {
 		return _ui.get_panel();
+	}
+	
+	public List<Mouse> getMouseList()
+	{
+		return _service.getMouseList();
 	}
 
 	@Override

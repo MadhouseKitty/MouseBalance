@@ -18,7 +18,7 @@ public class MeasurementTool extends Observable implements Observer {
 	public MeasurementTool(MouseTool mtool) {
 		_mtool = mtool;
 		_mtool.addObserver(this);
-		_service = new MeasurementService();
+		_service = new MeasurementService(mtool);
 		_service.addObserver(this);
 		_measuremodel = new MeasurementTableModel();
 		_measuremodel.setmeasurements(_service.getListForMouse(null));
