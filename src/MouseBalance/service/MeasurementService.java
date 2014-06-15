@@ -20,12 +20,23 @@ public class MeasurementService extends Observable
 	
 	public void addMeasurement(Mouse sweetMouse, Measurement measurement)
 	{
+		System.out.println("Do Stuff");
+		if(!_mousemap.containsKey(sweetMouse))
+		{
+			_mousemap.put(sweetMouse, new ArrayList<Measurement>());
+		}
 		_mousemap.get(sweetMouse).add(measurement);
-		this.notifyObservers();
+		System.out.println(_mousemap.get(sweetMouse).size());
+		setChanged();
+		notifyObservers();
 	}
 	
 	public List<Measurement> getListForMouse(Mouse mice)
 	{
+		if(_mousemap.containsKey(mice))
+		{
+			return new ArrayList<>(_mousemap.get(mice));
+		}
 		return new ArrayList();
 	}
 }

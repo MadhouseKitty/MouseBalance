@@ -10,7 +10,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import MouseBalance.materials.Measurement;
 import MouseBalance.materials.Mouse;
+import MouseBalance.materials.Weight;
 
 public class DialogTool
 {
@@ -57,6 +59,49 @@ public class DialogTool
 				{
 					// TODO Auto-generated catch block
 					message[0] = "Datum bitte im 19.01.1900 Format eingeben";
+				}
+			}
+		}
+		return null;
+	}
+	
+	public static Measurement newMeasurementDialog()
+	{
+		JTextField measurementWeight = new JTextField(12);
+		JTextField measurementDate = new JTextField(12);
+		
+		JPanel measurementWeightPanel = new JPanel();
+		measurementWeightPanel.add(new JLabel("Gewicht:"));
+		measurementWeightPanel.add(measurementWeight);
+		JPanel measurementDatePanel = new JPanel();
+		measurementDatePanel.add(new JLabel("Datum:"));
+		measurementWeightPanel.add(Box.createHorizontalStrut(8));
+		measurementDatePanel.add(measurementDate);
+		Object[] message = {"",measurementDatePanel,measurementWeightPanel};
+
+		int result = 0;
+		while(result != JOptionPane.CANCEL_OPTION)
+		{
+			result = JOptionPane.showConfirmDialog(null, message,
+					"Create new Mouse", JOptionPane.OK_CANCEL_OPTION);
+			if (result == JOptionPane.OK_OPTION)
+			{
+				SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+				try
+				{
+					Date mDate = formatter.parse(measurementDate.getText());
+					int mWeight = Integer.parseInt(measurementWeight.getText());
+
+						return new Measurement(new Weight(mWeight), mDate);
+				} 
+				catch (ParseException e)
+				{
+					// TODO Auto-generated catch block
+					message[0] = "Datum bitte im 19.01.1900 Format eingeben";
+				}
+				catch (NumberFormatException e)
+				{
+					message[0] = "Bitte eine Gueltiges Gewicht in mg angeben";
 				}
 			}
 		}

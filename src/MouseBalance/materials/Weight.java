@@ -6,6 +6,10 @@ public class Weight
 	
 	public Weight(int weight)
 	{
+		if(weight < 0)
+		{
+			throw new NumberFormatException();
+		}
 		_weight = weight;
 	}
 	

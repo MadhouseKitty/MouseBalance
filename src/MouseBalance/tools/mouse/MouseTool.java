@@ -17,8 +17,15 @@ public class MouseTool extends Observable implements Observer
 	public void update(Observable o, Object arg)
 	{
 		System.out.println("Blub");
-		_model.setmouse(_service.getMouseList());
-		_ui.get_panel().repaint();
+		if(o instanceof MouseUi)
+		{
+			setChanged();
+			notifyObservers();
+		}
+		else
+		{
+			_model.setmouse(_service.getMouseList());
+		}		
 	}
 	public MouseTool()
 	{
@@ -27,6 +34,7 @@ public class MouseTool extends Observable implements Observer
 		_model = new MouseListModel();
 		_model.setmouse(_service.getMouseList());
 		_ui = new MouseUi(_model,this);
+		_ui.addObserver(this);
 	}
 	
 	public void addMouse(Mouse mice)

@@ -1,5 +1,6 @@
 package MouseBalance.tools.measurement;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Date;
 
@@ -14,6 +15,8 @@ public class MeasurementTableModel extends AbstractTableModel
 	public void setmeasurements(List<Measurement> measurements)
 	{
 		_measurements = measurements;
+		this.fireTableDataChanged();
+		System.out.println("Test");
 	}
 
 	@Override
@@ -39,18 +42,20 @@ public class MeasurementTableModel extends AbstractTableModel
 	@Override
 	public int getRowCount()
 	{
+		System.out.println(_measurements.size());
 		return _measurements.size();
 	}
 
 	@Override
 	public Object getValueAt(int row, int column)
 	{
+		SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
 		switch (column)
 		{
 			case 0:
-				return _measurements.get(row).getDate();
+				return formatter.format(_measurements.get(row).getDate());
 			case 1:
-				return _measurements.get(row).getWeight();
+				return _measurements.get(row).getWeight().getWeight();
 			default:
 				return null;
 		}

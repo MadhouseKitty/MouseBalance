@@ -5,6 +5,7 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
+import MouseBalance.materials.Measurement;
 import MouseBalance.service.MeasurementService;
 import MouseBalance.tools.mouse.MouseTool;
 
@@ -20,9 +21,10 @@ public class MeasurementTool extends Observable implements Observer
 		_mtool = mtool;
 		_mtool.addObserver(this);
 		_service = new MeasurementService();
+		_service.addObserver(this);
 		_measuremodel = new MeasurementTableModel();
 		_measuremodel.setmeasurements(_service.getListForMouse(null));
-		_ui = new MeasurementUi(_measuremodel);
+		_ui = new MeasurementUi(_measuremodel, this);
 	}
 	
 	public JPanel getUiPanel()
@@ -33,6 +35,12 @@ public class MeasurementTool extends Observable implements Observer
 	@Override
 	public void update(Observable arg0, Object arg1)
 	{
+		System.out.println("Got Update for Table");
 		_measuremodel.setmeasurements(_service.getListForMouse(_mtool.getSelectedMouse()));
+	}
+	
+	public void addMeasurement(Measurement measurement)
+	{
+		_service.addMeasurement(_mtool.getSelectedMouse(),measurement);
 	}
 }
