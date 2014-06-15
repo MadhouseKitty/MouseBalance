@@ -7,24 +7,20 @@ import java.util.Observable;
 
 import MouseBalance.materials.Mouse;
 
-public class MouseService extends Observable
-{
+public class MouseService extends Observable {
 	private List<Mouse> _mouseList;
-	
-	public MouseService()
-	{
+
+	public MouseService() {
 		_mouseList = new LinkedList<Mouse>();
 	}
-	
-	public void addMouse(Mouse sweetMouse)
-	{
+
+	public void addMouse(Mouse sweetMouse) {
 		_mouseList.add(sweetMouse);
 		this.setChanged();
 		this.notifyObservers();
 	}
-	
-	public List<Mouse> getMouseList()
-	{
+
+	public List<Mouse> getMouseList() {
 		return new ArrayList<>(_mouseList);
 	}
 }
