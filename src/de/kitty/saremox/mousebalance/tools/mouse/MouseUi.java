@@ -51,7 +51,7 @@ public class MouseUi extends Observable {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			int result = JOptionPane.showConfirmDialog(null, "Willst du "+getSelectedMouse().getName()+
-														" Wirklich löschen?", "Lösch bestatigung", JOptionPane.YES_NO_OPTION);
+														" Wirklich loeschen?", "Loesch bestatigung", JOptionPane.YES_NO_OPTION);
 			if(result == JOptionPane.OK_OPTION)
 			{
 				_tool.removeMouse(getSelectedMouse());
