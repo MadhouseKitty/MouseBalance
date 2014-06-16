@@ -20,7 +20,7 @@ public class MouseLoader {
 	{		
 		LinkedList<Mouse> mouseList = new LinkedList<>();
 		
-		try (BufferedReader savedMice = new BufferedReader(new FileReader("../savedmice")))
+		try (BufferedReader savedMice = new BufferedReader(new FileReader("mice.list")))
 		{
 			String mouseString;
 			
@@ -44,7 +44,7 @@ public class MouseLoader {
 		} 		
 		catch (IOException e) 		
 		{
-			e.printStackTrace();
+            // Save File not Found
 		}
 		return mouseList;
 	}

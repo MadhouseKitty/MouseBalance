@@ -11,7 +11,7 @@ public class MouseSaver {
 
 	public void saveMice(List<Mouse> _mouseList) {
 		
-		try (FileWriter mouselist = new FileWriter("../tomouselist.txt", true))
+		try (FileWriter mouselist = new FileWriter("mice.list"))
 		{
 			for(Mouse mouse : _mouseList)
 			{
@@ -27,7 +27,7 @@ public class MouseSaver {
 	
 	public static void saveMouse(Mouse mouse) {
 		
-		try(FileWriter savedMice = new FileWriter("../savedmice", true))
+		try(FileWriter savedMice = new FileWriter("mice.list", true))
 		{
 			savedMice.write(mouse.saveString()+"\n");
 		}
