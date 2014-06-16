@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<project name="MouseBalance" basedir="." default="build">
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="bin"/>
+
+
+    <target name="build" description="Compiling the Project MouseBalance">
+        <mkdir dir ="${build.dir}"/>
+        <javac destdir="${build.dir}" source="1.7" target="1.7">
+            <src path="${src.dir}"/>
+        </javac>
+        <jar destfile="${basedir}/MouseBalance.jar"
+             basedir="${build.dir}">
+             <manifest>
+                <attribute name="Main-Class" value="de.kitty.saremox.mousebalance.startup.Startup"/>
+             </manifest>
+        </jar>
+    </target>
+    
+    <target name="clean">
+        <delete>
+            <fileset dir="${build.dir}">
+                <include name="**/*.class"/>
+            </fileset>
+        </delete>
+    </target>
+</project>
