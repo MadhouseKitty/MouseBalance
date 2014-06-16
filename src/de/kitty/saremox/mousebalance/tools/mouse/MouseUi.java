@@ -2,14 +2,20 @@ package de.kitty.saremox.mousebalance.tools.mouse;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Observable;
 
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
@@ -68,6 +74,10 @@ public class MouseUi extends Observable {
 	private JButton _newMouseButton;
 	private JButton _removeMouseButton;
 
+    private JMenu _mouseMenu;
+
+    private JMenuItem _newMouseMT,_removeMouseMT;
+
 	public MouseUi(MouseListModel _model, MouseTool tool) {
 		super();
 		_tool = tool;
@@ -87,7 +97,48 @@ public class MouseUi extends Observable {
 		_panel.setLayout(new BorderLayout());
 		_panel.add(_buttonPanel, BorderLayout.NORTH);
 		_panel.add(new JScrollPane(_list), BorderLayout.CENTER);
+		this.setupMenu();
+		this.setupPopupMenu();
 	}
+
+    private void setupMenu()
+    {
+        _mouseMenu = new JMenu("Maus");
+        _newMouseMT = new JMenuItem("Neue Maus");
+        _newMouseMT.addActionListener(new NewMouseButtonListener());
+        _removeMouseMT = new JMenuItem("Maus Entfernen");
+        _removeMouseMT.addActionListener(new RemoveMouseButtonListener());
+        _mouseMenu.add(_newMouseMT);
+        _mouseMenu.add(_removeMouseMT);
+        de.kitty.saremox.mousebalance.tools.MainUi.registerMenu(_mouseMenu);
+    }
+    
+    private void setupPopupMenu()
+    {
+    	final JPopupMenu menu = new JPopupMenu();
+    	JMenuItem newMouseMT = new JMenuItem("Neue Maus");
+        newMouseMT.addActionListener(new NewMouseButtonListener());
+        JMenuItem removeMouseMT = new JMenuItem("Maus Entfernen");
+        removeMouseMT.addActionListener(new RemoveMouseButtonListener());
+        menu.add(newMouseMT);
+        menu.add(removeMouseMT);
+        
+    	_list.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                if (e.isPopupTrigger()) {
+                	_list.setSelectedIndex(getRow(e.getPoint()));
+                    
+                    menu.show(_list, 5, e.getY());
+                }
+            }
+
+            private int getRow(Point point)
+            {
+               return _list.locationToIndex(point);
+       }
+
+        });
+    }
 
 	public JPanel get_panel() {
 		return _panel;

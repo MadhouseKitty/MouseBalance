@@ -37,5 +37,11 @@ public class MeasurementTool extends Observable implements Observer {
 	public void update(Observable arg0, Object arg1) {
 		_measuremodel.setmeasurements(_service.getListForMouse(_mtool
 				.getSelectedMouse()));
+		setChanged();
+		if(_mtool.getSelectedMouse() != null)
+		{
+			notifyObservers(new Boolean(true));
+		}
+		notifyObservers(new Boolean(false));
 	}
 }
