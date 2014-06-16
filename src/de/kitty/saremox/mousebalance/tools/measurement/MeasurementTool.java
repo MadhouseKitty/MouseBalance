@@ -1,9 +1,9 @@
 package de.kitty.saremox.mousebalance.tools.measurement;
 
+import java.awt.Component;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-
-import javax.swing.JPanel;
 
 import de.kitty.saremox.mousebalance.materials.Measurement;
 import de.kitty.saremox.mousebalance.service.MeasurementService;
@@ -29,14 +29,15 @@ public class MeasurementTool extends Observable implements Observer {
 		_service.addMeasurement(_mtool.getSelectedMouse(), measurement);
 	}
 
-	public JPanel getUiPanel() {
-		return _ui.get_panel();
+	public Component getUIComponent() {
+		return _ui.getComponent();
 	}
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		_measuremodel.setmeasurements(_service.getListForMouse(_mtool
 				.getSelectedMouse()));
+		_ui.setGraphList(_service.getListForMouse(_mtool.getSelectedMouse()));
 		setChanged();
 		if(_mtool.getSelectedMouse() != null)
 		{

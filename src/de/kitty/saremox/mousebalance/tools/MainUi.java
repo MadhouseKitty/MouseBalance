@@ -1,9 +1,9 @@
 package de.kitty.saremox.mousebalance.tools;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 
@@ -11,7 +11,7 @@ public class MainUi {
 	private JFrame _frame;
     private static JMenuBar _framebar;
 
-	public MainUi(JPanel _mouselistpanel, JPanel _measurementstablepanel) {
+	public MainUi(Component _mouselistpanel, Component _measurementstablepanel) {
 		super();
 		
         

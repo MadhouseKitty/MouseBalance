@@ -8,6 +8,6 @@ public class Startup {
 	public static void main(String[] args) {
 		MouseTool _mtool = new MouseTool();
 		MeasurementTool _measureTool = new MeasurementTool(_mtool);
-		new MainUi(_mtool.getUiPanel(), _measureTool.getUiPanel());
+		new MainUi(_mtool.getUiPanel(), _measureTool.getUIComponent());
 	}
 }
