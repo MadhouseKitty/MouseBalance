@@ -62,10 +62,10 @@ public class DialogTool {
 		namePanel.add(Box.createHorizontalStrut(22));
 		namePanel.add(mouseName);
 		JPanel birthPanel = new JPanel();
-		birthPanel.add(new JLabel("Birthdate:"));
+		birthPanel.add(new JLabel("Geburtsdatum:"));
 		birthPanel.add(mouseBirthDate);
 		JPanel colourPanel = new JPanel();
-		colourPanel.add(new JLabel("Colour:"));
+		colourPanel.add(new JLabel("Farbe:"));
 		colourPanel.add(Box.createHorizontalStrut(16));
 		colourPanel.add(mouseColour);
 		Object[] message = { "", namePanel, birthPanel, colourPanel };

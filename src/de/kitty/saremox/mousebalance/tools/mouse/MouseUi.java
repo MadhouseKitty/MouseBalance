@@ -2,14 +2,19 @@ package de.kitty.saremox.mousebalance.tools.mouse;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Observable;
 
+import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -33,7 +38,11 @@ public class MouseUi extends Observable {
 			notifyObservers();
 			if(getSelectedMouse() != null)
 			{
-				_removeMouseButton.setEnabled(true);;
+				_removeMouseButton.setEnabled(true);
+				_mouseName.setText(getSelectedMouse().getName());
+		    	_mouseBirth.setText(new SimpleDateFormat("dd.MM.yyyy").format(getSelectedMouse().getBirthday()));
+		    	_mouseAge.setText(Long.toString((new Date().getTime() - getSelectedMouse().getBirthday().getTime())/(1000l*31556926l)));
+		    	_mouseColour.setText(getSelectedMouse().getColour());
 			}
 		}
 
@@ -69,7 +78,9 @@ public class MouseUi extends Observable {
 	private MouseTool _tool;
 	private JList<Mouse> _list;
 
-	private JPanel _panel,_buttonPanel;
+	private JPanel _panel,_buttonPanel,_infoPanel;
+	
+	private JLabel _mouseName,_mouseBirth,_mouseAge,_mouseColour;
 
 	private JButton _newMouseButton;
 	private JButton _removeMouseButton;
@@ -99,6 +110,10 @@ public class MouseUi extends Observable {
 		_panel.add(new JScrollPane(_list), BorderLayout.CENTER);
 		this.setupMenu();
 		this.setupPopupMenu();
+		this.setupMouseInfoPanel();
+		_panel.add(_infoPanel, BorderLayout.SOUTH);
+		_panel.add(Box.createHorizontalStrut(5),BorderLayout.EAST);
+		_panel.add(Box.createHorizontalStrut(5),BorderLayout.WEST);
 	}
 
     private void setupMenu()
@@ -111,6 +126,23 @@ public class MouseUi extends Observable {
         _mouseMenu.add(_newMouseMT);
         _mouseMenu.add(_removeMouseMT);
         de.kitty.saremox.mousebalance.tools.MainUi.registerMenu(_mouseMenu);
+    }
+    
+    private void setupMouseInfoPanel()
+    {
+    	_mouseName = new JLabel("");
+    	_mouseBirth = new JLabel("");
+    	_mouseAge = new JLabel("");
+    	_mouseColour = new JLabel("");
+    	_infoPanel = new JPanel(new GridLayout(4, 2, 5, 5));
+    	_infoPanel.add(new JLabel("Name:"));
+    	_infoPanel.add(_mouseName);
+    	_infoPanel.add(new JLabel("Geburtsdatum:"));
+    	_infoPanel.add(_mouseBirth);
+    	_infoPanel.add(new JLabel("Alter:"));
+    	_infoPanel.add(_mouseAge);
+    	_infoPanel.add(new JLabel("Farbe:"));
+    	_infoPanel.add(_mouseColour);
     }
     
     private void setupPopupMenu()
