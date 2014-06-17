@@ -89,13 +89,13 @@ public class MeasurementUi implements Observer
 	
 	private void setupGraph()
 	{
-		_graph1m = new MeasurementGraph(new ArrayList<Measurement>(),31);
+		_graph1m = new MeasurementGraph(new ArrayList<Measurement>(),1);
 		_graph1m.setDoubleBuffered(true);
-		_graph3m = new MeasurementGraph(new ArrayList<Measurement>(),31*3);
+		_graph3m = new MeasurementGraph(new ArrayList<Measurement>(),3);
 		_graph3m.setDoubleBuffered(true);
-		_graph6m = new MeasurementGraph(new ArrayList<Measurement>(),31*6);
+		_graph6m = new MeasurementGraph(new ArrayList<Measurement>(),6);
 		_graph6m.setDoubleBuffered(true);
-		_graph12m = new MeasurementGraph(new ArrayList<Measurement>(),31*12);
+		_graph12m = new MeasurementGraph(new ArrayList<Measurement>(),12);
 		_graph12m.setDoubleBuffered(true);
 	}
 
