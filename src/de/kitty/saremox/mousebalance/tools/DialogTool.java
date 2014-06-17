@@ -59,7 +59,8 @@ public class DialogTool
 		return null;
 	}
 
-	public static Mouse newMouseDialog() {
+	public static Mouse newMouseDialog()
+	{
 		JTextField mouseName = new JTextField(12);
 		JTextField mouseBirthDate = new JTextField(12);
 		JTextField mouseColour = new JTextField(12);
@@ -78,24 +79,29 @@ public class DialogTool
 		Object[] message = { "", namePanel, birthPanel, colourPanel };
 
 		int result = 0;
-		while (result != JOptionPane.CANCEL_OPTION) {
+		while (result != JOptionPane.CANCEL_OPTION)
+		{
 			result = JOptionPane.showConfirmDialog(null, message,
 					"Create new Mouse", JOptionPane.OK_CANCEL_OPTION);
-			if (result == JOptionPane.OK_OPTION) {
+			if (result == JOptionPane.OK_OPTION)
+			{
 				SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
-				try {
+				try
+				{
 					Date birth = formatter.parse(mouseBirthDate.getText());
-					if (mouseName.getText().isEmpty()) {
+					if (mouseName.getText().isEmpty())
+					{
 						message[0] = "Bitte gib einen namen ein. \nErlaubte Zeichen A-Z,a-z oder -";
-					} else if(mouseName.getText().matches("[A-Za-z-]+"))
+					} else if (mouseName.getText().matches("[A-Za-z-]+"))
 					{
 						return new Mouse(mouseName.getText(), birth,
 								mouseColour.getText());
-					}
-					else {
+					} else
+					{
 						message[0] = "Unerlaubtes Zeichen \nErlaubte Zeichen A-Z,a-z oder -";
 					}
-				} catch (ParseException e) {
+				} catch (ParseException e)
+				{
 					// TODO Auto-generated catch block
 					message[0] = "Datum bitte im 19.01.1900 Format eingeben";
 				}

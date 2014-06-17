@@ -6,32 +6,32 @@ import java.util.List;
 
 import de.kitty.saremox.mousebalance.materials.Mouse;
 
+public class MouseSaver
+{
 
-public class MouseSaver {
+	public static void saveMouse(Mouse mouse)
+	{
 
-	public void saveMice(List<Mouse> _mouseList) {
-		
-		try (FileWriter mouselist = new FileWriter("mice.list"))
+		try (FileWriter savedMice = new FileWriter("mice.list", true))
 		{
-			for(Mouse mouse : _mouseList)
-			{
-				mouselist.write(mouse.getSaveString()+"\n");
-				
-			}
-		}
-		catch (IOException e) 		
+			savedMice.write(mouse.getSaveString() + "\n");
+		} catch (IOException e)
 		{
 			e.printStackTrace();
 		}
 	}
-	
-	public static void saveMouse(Mouse mouse) {
-		
-		try(FileWriter savedMice = new FileWriter("mice.list", true))
+
+	public void saveMice(List<Mouse> _mouseList)
+	{
+
+		try (FileWriter mouselist = new FileWriter("mice.list"))
 		{
-			savedMice.write(mouse.getSaveString()+"\n");
-		}
-		catch (IOException e)
+			for (Mouse mouse : _mouseList)
+			{
+				mouselist.write(mouse.getSaveString() + "\n");
+
+			}
+		} catch (IOException e)
 		{
 			e.printStackTrace();
 		}

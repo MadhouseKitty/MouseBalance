@@ -7,7 +7,8 @@ import javax.swing.table.AbstractTableModel;
 
 import de.kitty.saremox.mousebalance.materials.Measurement;
 
-public class MeasurementTableModel extends AbstractTableModel {
+public class MeasurementTableModel extends AbstractTableModel
+{
 	/**
 	 * 
 	 */
@@ -15,13 +16,16 @@ public class MeasurementTableModel extends AbstractTableModel {
 	private List<Measurement> _measurements;
 
 	@Override
-	public int getColumnCount() {
+	public int getColumnCount()
+	{
 		return 2;
 	}
 
 	@Override
-	public String getColumnName(int index) {
-		switch (index) {
+	public String getColumnName(int index)
+	{
+		switch (index)
+		{
 		case 0:
 			return "Datum";
 		case 1:
@@ -32,14 +36,17 @@ public class MeasurementTableModel extends AbstractTableModel {
 	}
 
 	@Override
-	public int getRowCount() {
+	public int getRowCount()
+	{
 		return _measurements.size();
 	}
 
 	@Override
-	public Object getValueAt(int row, int column) {
+	public Object getValueAt(int row, int column)
+	{
 		SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
-		switch (column) {
+		switch (column)
+		{
 		case 0:
 			return formatter.format(_measurements.get(row).getDate());
 		case 1:
@@ -49,7 +56,8 @@ public class MeasurementTableModel extends AbstractTableModel {
 		}
 	}
 
-	public void setmeasurements(List<Measurement> measurements) {
+	public void setmeasurements(List<Measurement> measurements)
+	{
 		_measurements = measurements;
 		this.fireTableDataChanged();
 	}

@@ -8,35 +8,35 @@ import java.util.List;
 
 import de.kitty.saremox.mousebalance.materials.Mouse;
 
-
-public class MouseLoader {
+public class MouseLoader
+{
 
 	public static List<Mouse> loadMice()
-	{		
+	{
 		LinkedList<Mouse> mouseList = new LinkedList<>();
-		
-		try (BufferedReader savedMice = new BufferedReader(new FileReader("mice.list")))
+
+		try (BufferedReader savedMice = new BufferedReader(new FileReader(
+				"mice.list")))
 		{
 			String mouseString;
-			
+
 			while ((mouseString = savedMice.readLine()) != null)
 			{
-				if(mouseString.isEmpty())
+				if (mouseString.isEmpty())
 				{
 					continue;
 				}
 				Mouse mouse = Mouse.loadMouseString(mouseString);
-				if(mouse != null)
+				if (mouse != null)
 				{
 					mouseList.add(mouse);
 				}
-			}			
-		} 		
-		catch (IOException e) 		
+			}
+		} catch (IOException e)
 		{
-            // Save File not Found
+			// Save File not Found
 		}
 		return mouseList;
 	}
-	
+
 }

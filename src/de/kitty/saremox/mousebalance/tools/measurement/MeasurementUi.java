@@ -38,27 +38,29 @@ public class MeasurementUi implements Observer
 	}
 
 	private MeasurementTool _mtool;
-	
+
 	private JTabbedPane _mainPane;
-	private JPanel _tablePanel, _buttonPanel ;
+	private JPanel _tablePanel, _buttonPanel;
 	private JButton _newMeasurementButton;
-	
-	private MeasurementGraph _graph1m,_graph3m,_graph6m,_graph12m;
+
+	private MeasurementGraph _graph1m, _graph3m, _graph6m, _graph12m;
 
 	private JMenu _measuremtMenu;
 
 	private JMenuItem _newMeasurementMT;
 
-	public MeasurementUi(MeasurementTableModel _tablemodel, MeasurementTool _mtool)
+	public MeasurementUi(MeasurementTableModel _tablemodel,
+			MeasurementTool _mtool)
 	{
 		super();
 		this._mtool = _mtool;
 		_mtool.addObserver(this);
-		
+
 		JTable table = new JTable(_tablemodel);
-		
+
 		_newMeasurementButton = new JButton("Neue Messung hinzufuegen");
-		_newMeasurementButton.addActionListener(new newMeasurementActionListener());
+		_newMeasurementButton
+				.addActionListener(new newMeasurementActionListener());
 		_newMeasurementButton.setEnabled(false);
 		_buttonPanel = new JPanel();
 		_buttonPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -70,11 +72,36 @@ public class MeasurementUi implements Observer
 		this.setupGraph();
 		_mainPane = new JTabbedPane();
 		_mainPane.add(_tablePanel, "Messungs Tabelle");
-		_mainPane.add(_graph1m,"1 Monat");
-		_mainPane.add(_graph3m,"3 Monate");
-		_mainPane.add(_graph6m,"6 Monate");
-		_mainPane.add(_graph12m,"12 Monate");
+		_mainPane.add(_graph1m, "1 Monat");
+		_mainPane.add(_graph3m, "3 Monate");
+		_mainPane.add(_graph6m, "6 Monate");
+		_mainPane.add(_graph12m, "12 Monate");
 		this.setupMenu();
+	}
+
+	public Component getComponent()
+	{
+		return _mainPane;
+	}
+
+	public void setGraphList(List<Measurement> list)
+	{
+		_graph1m.set_measurements(list);
+		_graph3m.set_measurements(list);
+		_graph6m.set_measurements(list);
+		_graph12m.set_measurements(list);
+	}
+
+	private void setupGraph()
+	{
+		_graph1m = new MeasurementGraph(new ArrayList<Measurement>(), 1);
+		_graph1m.setDoubleBuffered(true);
+		_graph3m = new MeasurementGraph(new ArrayList<Measurement>(), 3);
+		_graph3m.setDoubleBuffered(true);
+		_graph6m = new MeasurementGraph(new ArrayList<Measurement>(), 6);
+		_graph6m.setDoubleBuffered(true);
+		_graph12m = new MeasurementGraph(new ArrayList<Measurement>(), 12);
+		_graph12m.setDoubleBuffered(true);
 	}
 
 	private void setupMenu()
@@ -86,39 +113,14 @@ public class MeasurementUi implements Observer
 		_measuremtMenu.add(_newMeasurementMT);
 		de.kitty.saremox.mousebalance.tools.MainUi.registerMenu(_measuremtMenu);
 	}
-	
-	private void setupGraph()
-	{
-		_graph1m = new MeasurementGraph(new ArrayList<Measurement>(),1);
-		_graph1m.setDoubleBuffered(true);
-		_graph3m = new MeasurementGraph(new ArrayList<Measurement>(),3);
-		_graph3m.setDoubleBuffered(true);
-		_graph6m = new MeasurementGraph(new ArrayList<Measurement>(),6);
-		_graph6m.setDoubleBuffered(true);
-		_graph12m = new MeasurementGraph(new ArrayList<Measurement>(),12);
-		_graph12m.setDoubleBuffered(true);
-	}
-
-	public Component getComponent()
-	{
-		return _mainPane;
-	}
-	
-	public void setGraphList(List<Measurement> list)
-	{
-		_graph1m.set_measurements(list);
-		_graph3m.set_measurements(list);
-		_graph6m.set_measurements(list);
-		_graph12m.set_measurements(list);
-	}
 
 	@Override
 	public void update(Observable o, Object arg)
 	{
-		if(o instanceof MeasurementTool && arg instanceof Boolean)
+		if (o instanceof MeasurementTool && arg instanceof Boolean)
 		{
-			_newMeasurementMT.setEnabled(((Boolean) arg).booleanValue() );
-			_newMeasurementButton.setEnabled(((Boolean) arg).booleanValue() );
+			_newMeasurementMT.setEnabled(((Boolean) arg).booleanValue());
+			_newMeasurementButton.setEnabled(((Boolean) arg).booleanValue());
 		}
 	}
 }

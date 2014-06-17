@@ -9,12 +9,14 @@ import javax.swing.JPanel;
 import de.kitty.saremox.mousebalance.materials.Mouse;
 import de.kitty.saremox.mousebalance.service.MouseService;
 
-public class MouseTool extends Observable implements Observer {
+public class MouseTool extends Observable implements Observer
+{
 	private MouseService _service;
 	private MouseUi _ui;
 	private MouseListModel _model;
 
-	public MouseTool() {
+	public MouseTool()
+	{
 		_service = new MouseService();
 		_service.addObserver(this);
 		_model = new MouseListModel(_service.getMouseList());
@@ -23,33 +25,40 @@ public class MouseTool extends Observable implements Observer {
 		_ui.addObserver(this);
 	}
 
-	public void addMouse(Mouse mice) {
+	public void addMouse(Mouse mice)
+	{
 		_service.addMouse(mice);
 	}
-	
-	public void removeMouse(Mouse mice) {
-		_service.removeMouse(mice);
-	}
 
-	public Mouse getSelectedMouse() {
-		return _ui.getSelectedMouse();
-	}
-
-	public JPanel getUiPanel() {
-		return _ui.get_panel();
-	}
-	
 	public List<Mouse> getMouseList()
 	{
 		return _service.getMouseList();
 	}
 
+	public Mouse getSelectedMouse()
+	{
+		return _ui.getSelectedMouse();
+	}
+
+	public JPanel getUiPanel()
+	{
+		return _ui.get_panel();
+	}
+
+	public void removeMouse(Mouse mice)
+	{
+		_service.removeMouse(mice);
+	}
+
 	@Override
-	public void update(Observable o, Object arg) {
-		if (o instanceof MouseUi) {
+	public void update(Observable o, Object arg)
+	{
+		if (o instanceof MouseUi)
+		{
 			setChanged();
 			notifyObservers();
-		} else {
+		} else
+		{
 			_model.setmouse(_service.getMouseList());
 		}
 	}

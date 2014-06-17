@@ -12,19 +12,23 @@ import de.kitty.saremox.mousebalance.service.io.MeasurementLoader;
 import de.kitty.saremox.mousebalance.service.io.MeasurementSaver;
 import de.kitty.saremox.mousebalance.tools.mouse.MouseTool;
 
-public class MeasurementService extends Observable {
+public class MeasurementService extends Observable
+{
 	Map<Mouse, List<Measurement>> _mousemap;
 
-	public MeasurementService(MouseTool service) {
+	public MeasurementService(MouseTool service)
+	{
 		_mousemap = new HashMap<>();
-		for(Mouse mouse : service.getMouseList())
+		for (Mouse mouse : service.getMouseList())
 		{
 			_mousemap.put(mouse, MeasurementLoader.loadMeasurements(mouse));
 		}
 	}
 
-	public void addMeasurement(Mouse sweetMouse, Measurement measurement) {
-		if (!_mousemap.containsKey(sweetMouse)) {
+	public void addMeasurement(Mouse sweetMouse, Measurement measurement)
+	{
+		if (!_mousemap.containsKey(sweetMouse))
+		{
 			_mousemap.put(sweetMouse, new ArrayList<Measurement>());
 		}
 		_mousemap.get(sweetMouse).add(measurement);
@@ -33,8 +37,10 @@ public class MeasurementService extends Observable {
 		notifyObservers();
 	}
 
-	public List<Measurement> getListForMouse(Mouse mice) {
-		if (_mousemap.containsKey(mice)) {
+	public List<Measurement> getListForMouse(Mouse mice)
+	{
+		if (_mousemap.containsKey(mice))
+		{
 			return new ArrayList<>(_mousemap.get(mice));
 		}
 		return new ArrayList<>();
