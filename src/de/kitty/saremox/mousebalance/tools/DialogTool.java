@@ -14,8 +14,10 @@ import de.kitty.saremox.mousebalance.materials.Measurement;
 import de.kitty.saremox.mousebalance.materials.Mouse;
 import de.kitty.saremox.mousebalance.materials.Weight;
 
-public class DialogTool {
-	public static Measurement newMeasurementDialog() {
+public class DialogTool
+{
+	public static Measurement newMeasurementDialog()
+	{
 		JTextField measurementWeight = new JTextField(12);
 		JTextField measurementDate = new JTextField(12);
 		SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
@@ -31,21 +33,26 @@ public class DialogTool {
 		Object[] message = { "", measurementDatePanel, measurementWeightPanel };
 
 		int result = 0;
-		while (result != JOptionPane.CANCEL_OPTION) {
+		while (result != JOptionPane.CANCEL_OPTION)
+		{
 			result = JOptionPane.showConfirmDialog(null, message,
 					"Create new Mouse", JOptionPane.OK_CANCEL_OPTION);
-			if (result == JOptionPane.OK_OPTION) {
+			if (result == JOptionPane.OK_OPTION)
+			{
 
-				try {
+				try
+				{
 					Date mDate = formatter.parse(measurementDate.getText());
 					int mWeight = Integer.parseInt(measurementWeight.getText());
 
 					return new Measurement(new Weight(mWeight), mDate);
-				} catch (ParseException e) {
+				} catch (ParseException e)
+				{
 					// TODO Auto-generated catch block
 					message[0] = "Datum bitte im 19.01.1900 Format eingeben";
-				} catch (NumberFormatException e) {
-					message[0] = "Bitte eine Gueltiges Gewicht in mg angeben";
+				} catch (NumberFormatException e)
+				{
+					message[0] = "Bitte ein gueltiges Gewicht in mg angeben";
 				}
 			}
 		}
@@ -79,10 +86,14 @@ public class DialogTool {
 				try {
 					Date birth = formatter.parse(mouseBirthDate.getText());
 					if (mouseName.getText().isEmpty()) {
-						message[0] = "Bitte gib einen namen ein";
-					} else {
+						message[0] = "Bitte gib einen namen ein. \nErlaubte Zeichen A-Z,a-z oder -";
+					} else if(mouseName.getText().matches("[A-Za-z-]+"))
+					{
 						return new Mouse(mouseName.getText(), birth,
 								mouseColour.getText());
+					}
+					else {
+						message[0] = "Unerlaubtes Zeichen \nErlaubte Zeichen A-Z,a-z oder -";
 					}
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
@@ -92,5 +103,4 @@ public class DialogTool {
 		}
 		return null;
 	}
-
 }
