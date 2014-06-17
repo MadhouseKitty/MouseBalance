@@ -15,7 +15,7 @@ public class MouseSaver {
 		{
 			for(Mouse mouse : _mouseList)
 			{
-				mouselist.write(mouse.saveString()+"\n");
+				mouselist.write(mouse.getSaveString()+"\n");
 				
 			}
 		}
@@ -29,7 +29,7 @@ public class MouseSaver {
 		
 		try(FileWriter savedMice = new FileWriter("mice.list", true))
 		{
-			savedMice.write(mouse.saveString()+"\n");
+			savedMice.write(mouse.getSaveString()+"\n");
 		}
 		catch (IOException e)
 		{

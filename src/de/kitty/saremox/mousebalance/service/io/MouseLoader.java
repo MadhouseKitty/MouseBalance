@@ -3,15 +3,10 @@ package de.kitty.saremox.mousebalance.service.io;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.lang.model.util.SimpleAnnotationValueVisitor6;
-
 import de.kitty.saremox.mousebalance.materials.Mouse;
-import de.kitty.saremox.mousebalance.service.MouseService;
 
 
 public class MouseLoader {
@@ -30,15 +25,10 @@ public class MouseLoader {
 				{
 					continue;
 				}
-				
-				String [] mouseStringArray = mouseString.split("/");
-				try
+				Mouse mouse = Mouse.loadMouseString(mouseString);
+				if(mouse != null)
 				{
-					mouseList.add(new Mouse(mouseStringArray[0], new SimpleDateFormat("dd.MM.yyyy").parse(mouseStringArray[1]), mouseStringArray[2]));
-				}
-				catch (ParseException e)
-				{
-					e.printStackTrace();
+					mouseList.add(mouse);
 				}
 			}			
 		} 		

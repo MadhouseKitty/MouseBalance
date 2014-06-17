@@ -1,6 +1,5 @@
 package de.kitty.saremox.mousebalance.materials;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.zip.Adler32;
 
@@ -20,6 +19,19 @@ public class Mouse {
 		_myUID = _nextUID;
 		_nextUID++;
 	}
+	
+	private Mouse(long uid, String name, long birthtime, String colour, long creatime)
+	{
+		_myUID = uid;
+		_name = name;
+		_birthday = new Date(birthtime);
+		_colour = colour;
+		_createTime = creatime;
+		if(_myUID > _nextUID)
+		{
+			_nextUID = _myUID+1;
+		}
+	}
 
 	public Date getBirthday() {
 		return _birthday;
@@ -38,8 +50,12 @@ public class Mouse {
 		return _name;
 	}
 	
-	public String saveString() {
-		return Long.toHexString(_myUID)+"/"+_name + "/" + new SimpleDateFormat("dd.MM.yyyy").format(_birthday) + "/" + _colour + "/" + Long.toHexString(_createTime);
+	public String getSaveString() {
+		return 		Long.toHexString(_myUID)+"/"
+					+_name + "/"
+					+ Long.toHexString(_birthday.getTime()) + "/" 
+					+ _colour + "/" 
+					+ Long.toHexString(_createTime);
 	}
 	
 	public int hashCode()
@@ -59,5 +75,22 @@ public class Mouse {
 	public String getFileName()
 	{
 		return _name+"["+Integer.toHexString(hashCode())+"].mice";
+	}
+	
+	public static Mouse loadMouseString(String mouse)
+	{
+		try {
+			String [] mouseStringArray = mouse.split("/");
+			long uid 			= Long.decode("0x"+mouseStringArray[0]);
+			long birthdayTime 	= Long.decode("0x"+mouseStringArray[2]);
+			long createtime 	= Long.decode("0x"+mouseStringArray[4]);
+			String name 		= mouseStringArray[1];
+			String colour 		= mouseStringArray[3];
+			return new Mouse(uid,name,birthdayTime,colour,createtime);
+		}
+		catch (Exception e)
+		{
+			return null;
+		}
 	}
 }

@@ -4,48 +4,32 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import de.kitty.saremox.mousebalance.materials.Measurement;
 import de.kitty.saremox.mousebalance.materials.Mouse;
-import de.kitty.saremox.mousebalance.materials.Weight;
 
 public class MeasurementLoader {
 	public static List<Measurement> loadMeasurements(Mouse mouse)
 	{
 		ArrayList<Measurement> measurements = new ArrayList<>();
-		try(BufferedReader measurementReader = new BufferedReader(new FileReader(mouse.getName()+".mice")))
+		try(BufferedReader measurementReader = new BufferedReader(new FileReader(mouse.getFileName())))
 		{
-			DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-			String str;
-			while((str = measurementReader.readLine()) != null)
+			String measurementString;
+			while((measurementString = measurementReader.readLine()) != null)
 			{
-				if(str.isEmpty())
+				if(measurementString.isEmpty())
 				{
 					continue;
 				}
-				
-				String[] measurementString = str.split("/");
-				try
+				Measurement mes;
+				if((mes = Measurement.loadMeasurementString(measurementString)) != null)
 				{
-					measurements.add(new Measurement(new Weight(Integer.parseInt(measurementString[1])), format.parse(measurementString[0])));
-				}
-				catch(NumberFormatException e)
-				{
-					e.printStackTrace();
-				}
-				catch(ParseException e)
-				{
-					e.printStackTrace();
+					measurements.add(mes);
 				}
 			}
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,6 +1,5 @@
 package de.kitty.saremox.mousebalance.materials;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Measurement {
@@ -21,6 +20,21 @@ public class Measurement {
 	}
 
 	public String toSaveString() {
-		return new SimpleDateFormat("dd.MM.yyyy").format(_date)+"/"+_weight;
+		return Long.toHexString(_date.getTime())+"/"+Integer.toHexString(_weight.getWeight());
+	}
+	
+	public static Measurement loadMeasurementString(String measurement)
+	{
+		try
+		{
+			String[] measurementString = measurement.split("/");
+			long datetime 	= Long.decode("0x"+measurementString[0]);
+			int weight 		= Integer.decode("0x"+measurementString[1]);
+			return new Measurement(new Weight(weight), new Date(datetime));
+		}
+		catch(Exception e)
+		{
+			return null;
+		}
 	}
 }

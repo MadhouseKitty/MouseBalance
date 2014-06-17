@@ -10,7 +10,7 @@ public class MeasurementSaver {
 	
 	public static void saveMeasurement(Mouse mouse,Measurement measurement)
 	{
-		try(FileWriter measurementWriter = new FileWriter(mouse.getName()+".mice", true))
+		try(FileWriter measurementWriter = new FileWriter(mouse.getFileName(), true))
 		{
 			measurementWriter.write(measurement.toSaveString()+"\n");
 		} catch (IOException e) {
