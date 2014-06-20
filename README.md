@@ -7,5 +7,6 @@ This tool Automatically saves and load data from the current Working dir.
 # Compiling
 
     $ ant
+    $ ant pack
     $ java -jar MouseBalance.jar
 
